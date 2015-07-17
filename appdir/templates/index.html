@@ -1,0 +1,73 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!doctype html>
+
+{% block title %}Test{% endblock %}
+{% block  navbar %}
+
+
+<div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"><span>Test</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+
+                </div>
+            </div>
+        </div>
+
+{%endblock %}
+
+
+{% block content %}
+    <br><br><br><br><br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+
+
+        
+        {{ wtf.quick_form(form, extra_classes="input-sm") }}
+
+
+        
+      </div>
+    </div>
+  </div>
+
+    <br><br><br><br><br><br><br>
+
+
+      {# Filter Flash by Success ( category ) #}
+    <div class="container">
+      {% with messages = get_flashed_messages(category_filter=["success"]) %}
+      {% if messages %}
+        <ul class="flashes">
+          <div class="alert alert-dismissible alert-success col-md-6" role="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {% for message in messages %}
+              {{ message }}
+              {#{{ session.viewitems() }}#}
+
+            {% endfor %}
+        </ul>
+          </div>
+      {% endif %}
+      {% endwith %}
+
+    </div>
+
+
+      </div>
+
+
+  {%endblock %}
